@@ -1,8 +1,8 @@
 import os
 
 import openai
-from flask import Flask, request, jsonify
 from dotenv import load_dotenv
+from flask import Flask, request, jsonify
 
 # Load environment variables from .env file
 load_dotenv()
@@ -19,7 +19,7 @@ model = "text-davinci-003"  # Specify the GPT-3.5 turbo model
 expected_api_key = os.getenv('EXPECTED_API_KEY')  # Replace with your expected API key
 
 
-@app.route('/get_gpt_response', methods=['POST'])
+@app.route('/gpt/', methods=['POST'])
 def get_gpt_response():
     try:
         # Get API key from request header
