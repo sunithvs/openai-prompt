@@ -1,4 +1,5 @@
 import os
+from urllib.parse import quote_from_bytes
 
 import openai
 from dotenv import load_dotenv
@@ -37,8 +38,11 @@ def get_gpt_response():
         if not input_text:
             return jsonify({'error': 'Input text not provided.'}), 400
 
+            # Encode input_text to bytes
+        input_bytes = input_text.encode('utf-8')
+
         # Construct user context
-        user_context = f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {input_text}"
+        user_context = f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {quote_from_bytes(input_bytes)}"
 
         # Generate GPT response
         print("Generating GPT response...", user_context)
