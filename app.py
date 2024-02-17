@@ -47,17 +47,20 @@ def get_gpt_response():
         # Generate GPT response
         print("Generating GPT response...", user_context)
 
-        response = openai.Completion.create(
-            engine=engine,
-            prompt=user_context,
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Use the appropriate model name
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user",
+                 "content": f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {input_text}"}
+            ],
             max_tokens=150,  # Adjust as needed
             temperature=0.7,  # Adjust as needed
-            n=1,  # Number of completions to generate
             stop=None  # Custom stopping criteria if needed
         )
-        print(response)
+        print(type(response))
 
-        gpt_response = response.choices[0].text.strip()
+        gpt_response = response.choices[0]['message']['content']
         print(gpt_response)
 
         # Return the GPT response
