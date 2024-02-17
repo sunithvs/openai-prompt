@@ -31,6 +31,7 @@ def get_gpt_response():
 
         # Get input_text from the request
         input_text = request.json.get('input_text')
+        print("Input text:", input_text)
 
         # Ensure input_text is not empty
         if not input_text:
@@ -40,6 +41,7 @@ def get_gpt_response():
         user_context = f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {input_text}"
 
         # Generate GPT response
+        print("Generating GPT response...", user_context)
 
         response = openai.Completion.create(
             engine=engine,
@@ -49,6 +51,7 @@ def get_gpt_response():
             n=1,  # Number of completions to generate
             stop=None  # Custom stopping criteria if needed
         )
+        print(response)
 
         gpt_response = response.choices[0].text.strip()
         print(gpt_response)
