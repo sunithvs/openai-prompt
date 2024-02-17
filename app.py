@@ -40,6 +40,7 @@ def get_gpt_response():
         user_context = f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {input_text}"
 
         # Generate GPT response
+
         response = openai.Completion.create(
             engine=model,
             prompt=user_context,
@@ -50,11 +51,13 @@ def get_gpt_response():
         )
 
         gpt_response = response.choices[0].text.strip()
+        print(gpt_response)
 
         # Return the GPT response
         return jsonify({'gpt_response': gpt_response})
 
     except Exception as e:
+        print(f'An error occurred: {str(e)}')
         return jsonify({'error': f'An error occurred: {str(e)}'}), 500
 
 
