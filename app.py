@@ -15,7 +15,7 @@ openai.api_key = os.getenv('OPENAI_SECRET_KEY')
 if not openai.api_key:
     raise ValueError('OpenAI API key not set. Set the OPENAI_SECRET_KEY environment variable.')
 
-model = "text-davinci-003"  # Specify the GPT-3.5 turbo model
+engine = "gpt-3.5-turbo-instruct",
 expected_api_key = os.getenv('EXPECTED_API_KEY')  # Replace with your expected API key
 
 
@@ -42,7 +42,7 @@ def get_gpt_response():
         # Generate GPT response
 
         response = openai.Completion.create(
-            engine=model,
+            engine=engine,
             prompt=user_context,
             max_tokens=150,  # Adjust as needed
             temperature=0.7,  # Adjust as needed
