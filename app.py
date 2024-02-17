@@ -52,7 +52,8 @@ def get_gpt_response():
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user",
-                 "content": f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {input_text}"}
+                 "content": f"As a Kerala farmer, I need assistance with agricultural irrigation and related activities. {input_text}. "
+                            f"Dont use any kind of formatting in response make it  short also"}
             ],
             max_tokens=150,  # Adjust as needed
             temperature=0.7,  # Adjust as needed
